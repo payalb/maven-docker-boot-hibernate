@@ -56,11 +56,13 @@
 				<!-- The docker-maven-plugin uses the Docker remote API so the URL of your Docker Daemon must somehow be specified. The URL can be specified by the dockerHost or machine configuration, or by the DOCKER_HOST environment variable. -->
 				<dockerHost>tcp://192.168.99.100:2376</dockerHost>
 				<verbose>true</verbose>
+				<extensions>true</extensions>
 				<!-- Needed if pushing to docker hub : must store these in local env -->
-				<authConfig>
-					<username>payal1</username>
-					<password>krishna0</password>
-				</authConfig>
+				<!-- Moved this in settings.xml inside .m2 folder -->
+				<!-- <authConfig>
+					<username>username</username>
+					<password>password</password>
+				</authConfig> -->
 					<images>
 						<image>
 						<!-- name of the image -->
@@ -80,6 +82,14 @@
 						</image>
 					</images>
 				</configuration>
+				<executions>
+				<execution>
+				<phase>package</phase>
+				<goals>
+					<goal>build</goal>
+				</goals>
+				</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
